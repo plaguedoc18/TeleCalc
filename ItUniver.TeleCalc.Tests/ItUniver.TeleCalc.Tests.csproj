@@ -54,7 +54,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\TeleCalc\ItUniver.TeleCalc.ConCalc\ItUniver.TeleCalc.ConCalc.csproj">
+    <ProjectReference Include="..\ItUniver.TeleCalc.ConCalc\ItUniver.TeleCalc.ConCalc.csproj">
       <Project>{36b9764c-5e5b-4489-a9f7-e58425862b7d}</Project>
       <Name>ItUniver.TeleCalc.ConCalc</Name>
     </ProjectReference>
