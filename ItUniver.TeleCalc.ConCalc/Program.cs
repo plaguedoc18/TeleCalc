@@ -1,6 +1,8 @@
-﻿using System;
+﻿using ItUniver.TeleCalc.Core;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -10,45 +12,34 @@ namespace ItUniver.TeleCalc.ConCalc
     {
         static void Main(string[] args)
         {
-            try
+             try
             {
-                var calc = new Calc();
-                Double res;
-                if (args.Length == 0) Console.WriteLine("Нет аргументов");
-                else if (args.Length < 2) Console.WriteLine("Не хватает аргументов");
-                else
-                {
-                    if ((args.Length == 2) && (args[0] == "cube"))
+                
+                var calc = new Calc();             
+                    if (args.Length >= 3) 
                     {
-                        res = calc.Cube(Convert.ToDouble(args[1]));
-                        Console.WriteLine("=" + res);
-                    }
-                    else if (args.Length < 3) Console.WriteLine("Не хватает аргументов");
+                        string operName = args[0];
+                        double x = Convert.ToDouble(args[1]);
+                        double y = Convert.ToDouble(args[2]);
+
+                        double? result = calc.Exec(operName, x, y);
+
+                        Console.WriteLine("{0} {1} {2}={3}",x,operName,y,result);
+                     }
                     else
-                        switch (args[0])
-                        {
-                            case "sum":
-                                res = calc.Sum(Convert.ToDouble(args[1]), Convert.ToDouble(args[2]));
-                                Console.WriteLine("=" + res);
-                                break;
-                            case "sub":
-                                res = calc.Sub(Convert.ToDouble(args[1]), Convert.ToDouble(args[2]));
-                                Console.WriteLine("=" + res);
-                                break;
-                            case "mult":
-                                res = calc.Mult(Convert.ToDouble(args[1]), Convert.ToDouble(args[2]));
-                                Console.WriteLine("=" + res);
-                                break;
-                            case "div":
-                                res = calc.Div(Convert.ToDouble(args[1]), Convert.ToDouble(args[2]));
-                                Console.WriteLine("=" + res);
-                                break;
-                            default:
-                                Console.WriteLine("Неверная команда!");
-                                break;
-                        }
+                    {
+                        Console.WriteLine("Введите команду: ");
+                        string operName = Console.ReadLine();
+                        Console.WriteLine("Введите переменую1: ");
+                        double x=Convert.ToDouble(Console.ReadLine());
+                        Console.WriteLine("Введите переменую2: ");
+                        double y = Convert.ToDouble(Console.ReadLine());
+                        double? result = calc.Exec(operName, x, y);
+
+                        Console.WriteLine("{0} {1} {2} = {3}", x, operName, y, result);
+                    }
                 }
-            }
+            
             catch (Exception ex)
             {
                 Console.WriteLine("Тут ошибочка \n" + ex.Message);

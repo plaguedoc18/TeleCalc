@@ -1,6 +1,6 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using ItUniver.TeleCalc.ConCalc;
+using ItUniver.TeleCalc.Core;
 
 namespace ItUniver.TeleCalc.Tests
 {
