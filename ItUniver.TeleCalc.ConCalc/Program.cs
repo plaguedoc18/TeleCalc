@@ -18,7 +18,7 @@ namespace ItUniver.TeleCalc.ConCalc
                 else if (args.Length < 2) Console.WriteLine("Не хватает аргументов");
                 else
                 {
-                    if ((args.Length == 2) && (args[1] == "cube"))
+                    if ((args.Length == 2) && (args[0] == "cube"))
                     {
                         res = calc.Cube(Convert.ToDouble(args[1]));
                         Console.WriteLine("=" + res);
