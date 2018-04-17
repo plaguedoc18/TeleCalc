@@ -23,7 +23,7 @@ namespace ItUniver.TeleCalc.ConCalc
                         res = calc.Cube(Convert.ToDouble(args[1]));
                         Console.WriteLine("=" + res);
                     }
-                    if (args.Length < 3) Console.WriteLine("Не хватает аргументов");
+                    else if (args.Length < 3) Console.WriteLine("Не хватает аргументов");
                     else
                         switch (args[0])
                         {
