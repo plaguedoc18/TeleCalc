@@ -12,10 +12,13 @@ namespace ItUniver.TeleCalc.Core
     public class Calc
     {
         private IOperation[] operations { get; set; }
+        private String[] opernames { get; set; }
+        public string[] GetOpers { get { return opernames; } }
 
         public Calc()
         {
             var opers = new List<IOperation>();
+            var opernamesi = new List<String>();
             //получить теущую сборку
             
             var assembly = Assembly.GetExecutingAssembly();
@@ -35,24 +38,23 @@ namespace ItUniver.TeleCalc.Core
                         opers.Add(obj);
                     }
                     Console.WriteLine(Item.Name);
+                    opernamesi.Add(Item.Name);
                 }
             }
 
             operations = opers.ToArray();
+            opernames = opernamesi.ToArray();
         }
-        
-        public Double Sqr(Double x)
-        {
-            return Math.Pow(x, 2);
-        }
-        public Double Exec(String operName, Double x, Double y)
+
+        public Double Exec(String operName, Double? x, Double? y)
         {
             
             IOperation operation = operations
                 .FirstOrDefault(o => o.Name == operName);         
             if (operation==null)
                 return double.NaN;
-            operation.Args = new Double[] { x, y };
+
+            operation.Args = new Double[] { (Double)x, (Double)y };
             return (double)operation.Result;
         }
 
