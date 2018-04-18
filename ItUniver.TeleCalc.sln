@@ -5,6 +5,8 @@ VisualStudioVersion = 12.0.21005.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ItUniver.TeleCalc.ConCalc", "ItUniver.TeleCalc.ConCalc\ItUniver.TeleCalc.ConCalc.csproj", "{36B9764C-5E5B-4489-A9F7-E58425862B7D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ItUniver.TeleCalc.Core", "ItUniver.TeleCalc.Core\ItUniver.TeleCalc.Core.csproj", "{EB1A063A-FA8F-47F8-8EB8-881B0DAEB904}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{36B9764C-5E5B-4489-A9F7-E58425862B7D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{36B9764C-5E5B-4489-A9F7-E58425862B7D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{36B9764C-5E5B-4489-A9F7-E58425862B7D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EB1A063A-FA8F-47F8-8EB8-881B0DAEB904}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EB1A063A-FA8F-47F8-8EB8-881B0DAEB904}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EB1A063A-FA8F-47F8-8EB8-881B0DAEB904}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EB1A063A-FA8F-47F8-8EB8-881B0DAEB904}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -4,17 +4,15 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{36B9764C-5E5B-4489-A9F7-E58425862B7D}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <ProjectGuid>{EB1A063A-FA8F-47F8-8EB8-881B0DAEB904}</ProjectGuid>
+    <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ItUniver.TeleCalc.ConCalc</RootNamespace>
-    <AssemblyName>ItUniver.TeleCalc.ConCalc</AssemblyName>
+    <RootNamespace>ItUniver.TeleCalc.Core</RootNamespace>
+    <AssemblyName>ItUniver.TeleCalc.Core</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -24,7 +22,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -42,18 +39,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Program.cs" />
+    <Compile Include="Calc.cs" />
+    <Compile Include="Operations\Degr.cs" />
+    <Compile Include="Operations\Mult.cs" />
+    <Compile Include="Operations\IOperation.cs" />
+    <Compile Include="Operations\Sub.cs" />
+    <Compile Include="Operations\Div.cs" />
+    <Compile Include="Operations\Sum.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\ItUniver.TeleCalc.Core\ItUniver.TeleCalc.Core.csproj">
-      <Project>{eb1a063a-fa8f-47f8-8eb8-881b0daeb904}</Project>
-      <Name>ItUniver.TeleCalc.Core</Name>
-    </ProjectReference>
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
