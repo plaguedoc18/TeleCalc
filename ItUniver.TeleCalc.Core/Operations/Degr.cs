@@ -13,10 +13,7 @@ namespace ItUniver.TeleCalc.Core.Operations
         {
             set
             {
-                var degr = 1d;
-                for (int i = 1; i < value[2]; i++)
-                { degr = degr * value[1]; }
-                Result = degr;                  
+                Result = value.Aggregate((x, y) => Math.Pow(x,y));                               
             }
             get { return new double[0]; } 
         }

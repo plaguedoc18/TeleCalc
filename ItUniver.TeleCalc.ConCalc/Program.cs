@@ -46,7 +46,7 @@ namespace ItUniver.TeleCalc.ConCalc
             }
             finally
             {
-                Console.WriteLine("Press any key for continue...");
+                Console.WriteLine("Для продолжения нажмите любую клавишу...");
                 Console.ReadKey();
             }
         }

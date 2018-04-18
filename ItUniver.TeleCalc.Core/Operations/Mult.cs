@@ -13,10 +13,7 @@ namespace ItUniver.TeleCalc.Core.Operations
         {
             set
             {
-                var mult = 1d;
-                foreach (var item in value)
-                { mult = mult * item; }
-                Result = mult;                  
+                Result = value.Aggregate((x, y) => x * y);                     
             }
             get { return new double[0]; } 
         }

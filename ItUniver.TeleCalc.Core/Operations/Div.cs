@@ -13,10 +13,7 @@ namespace ItUniver.TeleCalc.Core.Operations
         {
             set
             {
-                var div=value[0];
-                for (int i=1; i < value.Length;i++ )
-                { div = div / value[i]; }
-                Result = div;                
+                Result = value.Aggregate((x, y) => x / y);                    
             }
             get { return new double[0]; } 
         }
