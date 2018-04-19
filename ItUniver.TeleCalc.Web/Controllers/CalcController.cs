@@ -1,4 +1,5 @@
 ﻿using ItUniver.TeleCalc.Core;
+using ItUniver.TeleCalc.Web.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,29 +10,60 @@ namespace ItUniver.TeleCalc.Web.Controllers
 {
     public class CalcController : Controller
     {
+        
+        
+        [HttpGet]
+        public ActionResult Exec()
+        {
+            var calc = new Calc();
+            SelectList Slist = new SelectList(calc.GetOpers);
+            ViewBag.list = Slist;
+            return View();
+        }
+         [HttpPost]  
+         public ActionResult Exec(CalcModel model )
+        {
+            var calc = new Calc();
+            var operName = calc.GetOpers;
+            if (calc.GetOpers.Contains(model.Opername))
+            {
+                model.Result = calc.Exec(model.Opername.ToLower(), model.X, model.Y);
+            }
+            var list = calc.GetOpers;
+            SelectList Slist = new SelectList(list);
+            ViewBag.list = Slist;
+
+            return View(model);
+        }
     [HttpGet]
         public ActionResult Index(String operName, Double? x, Double? y)
         {
-            var calc = new Calc();    
- 
-                ViewBag.Result = calc.Exec(operName, x, y);
+            var calc = new Calc();
+            ViewBag.Error = null;
+
+            if (calc.GetOpers.Contains(operName))
+            {
+                ViewBag.Result = calc.Exec(operName.ToLower(), x, y);
                 ViewBag.OperName = operName;
                 ViewBag.DataX = x;
                 ViewBag.DataY = y;
-
-            return View();
-        }
-
-        public ActionResult Operation()
-        {
-            var calc = new Calc();    
- 
-            foreach(string elem in calc.GetOpers)
-            {
-                ViewBag.opers += elem + "\t";
             }
-
+            else 
+            { 
+                ViewBag.Error = "Неверная команда";
+            }
             return View();
         }
+
+        public ActionResult Operations()
+        {
+            var calc = new Calc();
+            var list = calc.GetOpers;            
+            ViewBag.list = list;
+            return View("Ops");
+        }
+
+
 	}
+
 }

@@ -1,0 +1,15 @@
+﻿@{
+    ViewBag.Title="ItUniver";
+    var list = ViewBag.list;
+    
+}
+
+<h2>OPS</h2>
+<ul>
+    @foreach (string elem in ViewBag.list)
+    {
+        <li>
+            @Html.Partial("Operation",elem)
+        </li>
+    }
+</ul>
