@@ -4,12 +4,8 @@
     
 }
 
+
 <h2>OPS</h2>
-<ul>
-    @foreach (string elem in ViewBag.list)
-    {
-        <li>
-            @Html.Partial("Operation",elem)
-        </li>
-    }
-</ul>
+
+@Helpers.LiList(list)
+<hr />

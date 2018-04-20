@@ -1,0 +1,16 @@
+﻿
+
+@helper LiList(String[] array)
+{
+    <ul>
+    @foreach (string elem in array)
+    {
+        <li>
+            <span class="badge badge-info">
+             @elem
+             </span>
+        </li>
+    }
+    </ul>
+}
+

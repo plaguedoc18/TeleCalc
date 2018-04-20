@@ -21,19 +21,17 @@ namespace ItUniver.TeleCalc.Web.Controllers
             return View();
         }
          [HttpPost]  
-         public ActionResult Exec(CalcModel model )
+         public Double Exec(CalcModel model )
         {
             var calc = new Calc();
             var operName = calc.GetOpers;
             if (calc.GetOpers.Contains(model.Opername))
             {
-                model.Result = calc.Exec(model.Opername.ToLower(), model.X, model.Y);
+               return calc.Exec(model.Opername.ToLower(), model.X, model.Y);
+                
             }
-            var list = calc.GetOpers;
-            SelectList Slist = new SelectList(list);
-            ViewBag.list = Slist;
 
-            return View(model);
+            return double.NaN;
         }
     [HttpGet]
         public ActionResult Index(String operName, Double? x, Double? y)
