@@ -14,6 +14,7 @@ namespace ItUniver.TeleCalc.Core
         private IOperation[] operations { get; set; }
         private String[] opernames { get; set; }
         public string[] GetOpers { get { return opernames; } }
+        private double Result { get; set; }
 
         public Calc()
         {
@@ -55,7 +56,8 @@ namespace ItUniver.TeleCalc.Core
                 return double.NaN;
 
             operation.Args = new Double[] { (Double)x, (Double)y };
-            return (double)operation.Result;
+            Result=(double)operation.Result;
+            return Result;
         }
 
         #region old

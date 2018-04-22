@@ -16,7 +16,7 @@ namespace ItUniver.TeleCalc.Web.Models
         public double Y { get; set; }
     [DisplayName("Результат")]
         [ReadOnly(true)]
-        public double Result { get; set; }
+        public double? Result { get; set; }
 
     }
 }

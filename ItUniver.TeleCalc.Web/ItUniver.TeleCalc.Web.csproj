@@ -162,6 +162,7 @@
     <Content Include="Views\Calc\Exec.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\Double.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\Double_e.cshtml" />
+    <Content Include="Views\Shared\_Result.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ItUniver.TeleCalc.Core\ItUniver.TeleCalc.Core.csproj">
