@@ -10,38 +10,44 @@ namespace ItUniver.TeleCalc.Web.Controllers
 {
     public class CalcController : Controller
     {
-        
-        
+
+        private Calc Calc { get; set; }
+
+        public CalcController()
+        {
+            var calc = new Calc();
+        }
         [HttpGet]
         public ActionResult Exec()
         {
             var calc = new Calc();
-            SelectList Slist = new SelectList(calc.GetOpers);
-            ViewBag.list = Slist;
-            return View();
+            var model = new CalcModel();
+            var list = new SelectList(calc.GetOperNames());
+            model.OperationList = list;
+            return View(model);
         }
          [HttpPost]  
-         public Double Exec(CalcModel model )
+         public PartialViewResult Exec(CalcModel model )
         {
             var calc = new Calc();
-            var operName = calc.GetOpers;
-            if (calc.GetOpers.Contains(model.Opername))
+            var result = double.NaN;
+            if (Calc.GetOperNames().Contains(model.Opername))
             {
-               return calc.Exec(model.Opername.ToLower(), model.X, model.Y);
+               result =  calc.Exec(model.Opername.ToLower(), model.InputData);
                 
             }
 
-            return double.NaN;
+            return PartialView("_Result", result);
         }
     [HttpGet]
-        public ActionResult Index(String operName, Double? x, Double? y)
+        public ActionResult Index(String operName, Double x, Double y)
         {
             var calc = new Calc();
             ViewBag.Error = null;
 
-            if (calc.GetOpers.Contains(operName))
+            if (Calc.GetOperNames().Contains(operName))
             {
-                ViewBag.Result = calc.Exec(operName.ToLower(), x, y);
+                ViewBag.Result = calc.Exec(operName.ToLower(), new double[]{x, y});
                 ViewBag.OperName = operName;
                 ViewBag.DataX = x;
                 ViewBag.DataY = y;
@@ -56,9 +62,9 @@ namespace ItUniver.TeleCalc.Web.Controllers
         public ActionResult Operations()
         {
             var calc = new Calc();
-            var list = calc.GetOpers;            
+            var list = Calc.GetOperNames();            
             ViewBag.list = list;
-            return View("Ops");
+            return View();
         }
 
 

@@ -12,14 +12,18 @@ namespace ItUniver.TeleCalc.Core
     public class Calc
     {
         private IOperation[] operations { get; set; }
-        private String[] opernames { get; set; }
-        public string[] GetOpers { get { return opernames; } }
+        private string[] opernames { get; set; }
+        public IEnumerable<string> GetOperNames()
+        {
+            return operations.Select(o => o.Name);
+        }
+
         private double Result { get; set; }
+        public double GetResult { get { return Result; } }
 
         public Calc()
         {
             var opers = new List<IOperation>();
-            var opernamesi = new List<String>();
             //получить теущую сборку
             
             var assembly = Assembly.GetExecutingAssembly();
@@ -38,26 +42,29 @@ namespace ItUniver.TeleCalc.Core
                     {
                         opers.Add(obj);
                     }
-                    Console.WriteLine(Item.Name);
-                    opernamesi.Add(Item.Name);
                 }
             }
 
             operations = opers.ToArray();
-            opernames = opernamesi.ToArray();
+           
         }
-
-        public Double Exec(String operName, Double? x, Double? y)
+        //[Obsolete("Используйте метод Exec(operName, args)")]
+        public double Exec(String operName, double x, double y)
+        {
+            return Exec(operName,new double[] {x,y});
+          
+        }
+        public double Exec(String operName, IEnumerable<double> args)
         {
             
             IOperation operation = operations
-                .FirstOrDefault(o => o.Name == operName);         
-            if (operation==null)
+                .FirstOrDefault(o => o.Name == operName);
+            if (operation == null)
+            {
                 return double.NaN;
-
-            operation.Args = new Double[] { (Double)x, (Double)y };
-            Result=(double)operation.Result;
-            return Result;
+            }
+            operation.Args = args.ToArray();
+            return (double)operation.Result;
         }
 
         #region old

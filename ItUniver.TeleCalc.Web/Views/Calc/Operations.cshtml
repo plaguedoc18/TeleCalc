@@ -5,10 +5,4 @@
 
 <h2>Досупные операции: </h2>
 
-    @foreach(string elem in  ViewBag.list)
-    {
-       <li>
-           @elem
-       </li>
-    }
-
+@Helpers.LiList(ViewBag.opers)
