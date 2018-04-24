@@ -1,0 +1,20 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    var opername = ViewBag.OperName;
+    var error=ViewBag.Error;
+}
+
+<h2>ItUniver </h2>
+@if (error!=null)
+{
+    <div>
+        @error
+    </div>
+}
+else
+{
+<div> 
+    <b>@ViewBag.OperName</b> (@ViewBag.DataX, @ViewBag.DataY) = @(ViewBag.Result) 
+</div>
+}

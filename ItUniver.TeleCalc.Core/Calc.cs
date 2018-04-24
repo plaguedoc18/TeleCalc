@@ -12,6 +12,14 @@ namespace ItUniver.TeleCalc.Core
     public class Calc
     {
         private IOperation[] operations { get; set; }
+        private string[] opernames { get; set; }
+        public IEnumerable<string> GetOperNames()
+        {
+            return operations.Select(o => o.Name);
+        }
+
+        private double Result { get; set; }
+        public double GetResult { get { return Result; } }
 
         public Calc()
         {
@@ -34,25 +42,28 @@ namespace ItUniver.TeleCalc.Core
                     {
                         opers.Add(obj);
                     }
-                    Console.WriteLine(Item.Name);
                 }
             }
 
             operations = opers.ToArray();
+           
         }
-        
-        public Double Sqr(Double x)
+        //[Obsolete("Используйте метод Exec(operName, args)")]
+        public double Exec(String operName, double x, double y)
         {
-            return Math.Pow(x, 2);
+            return Exec(operName,new double[] {x,y});
+          
         }
-        public Double Exec(String operName, Double x, Double y)
+        public double Exec(String operName, IEnumerable<double> args)
         {
             
             IOperation operation = operations
-                .FirstOrDefault(o => o.Name == operName);         
-            if (operation==null)
+                .FirstOrDefault(o => o.Name == operName);
+            if (operation == null)
+            {
                 return double.NaN;
-            operation.Args = new Double[] { x, y };
+            }
+            operation.Args = args.ToArray();
             return (double)operation.Result;
         }
 
